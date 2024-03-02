@@ -1,0 +1,7 @@
+.PageTable {
+    display: grid;
+    gap: 20px;
+    grid-template-areas: 
+    "header"
+    "filter";
+}

@@ -1,0 +1,13 @@
+.header {
+    background-color: #fff;
+    border-bottom: 2px solid var(--suai-brand-color-1);
+    height: 55px;
+    padding: 0;
+    text-align: center;
+    grid-area: header;
+}
+
+.header__logo {
+    height: 100%;
+    width: 90px;
+}
