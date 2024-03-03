@@ -2,7 +2,7 @@
     grid-area: filter;
 }
 
-.div-select {
+.div_select {
     display: flex;
     flex-wrap: wrap;
     gap: 10px;

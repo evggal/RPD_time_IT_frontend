@@ -1,0 +1,9 @@
+.PageTable {
+    display: grid;
+    grid-template-areas: 
+    "header header header "
+    ". filter  ."
+    ". TableOfTemplate  .";
+    grid-template-columns: 10vw 80vw auto;
+    margin: 0;
+}

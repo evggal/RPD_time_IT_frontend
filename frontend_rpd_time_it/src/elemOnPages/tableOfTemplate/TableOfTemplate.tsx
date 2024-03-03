@@ -1,6 +1,8 @@
 import "./TableOfTemplate.css"
 import Table from 'react-bootstrap/Table';
 import eye from "./../../images/eye.svg"
+import Block from "../block/Block";
+import { Link } from "react-router-dom";
 
 function TableOfTemplate () {
     interface elemTemplate {
@@ -44,10 +46,52 @@ function TableOfTemplate () {
             department:43,
             formOfStudy:"вечерняя",
             year:2024
+        },
+        {
+            subject:"Математика",
+            director:"Иванов Иван Иванович",
+            department:21,
+            formOfStudy:"очная",
+            year:2023
+        },
+        {
+            subject:"Информатика",
+            director:"Самойлов Иван Иванович",
+            department:43,
+            formOfStudy:"вечерняя",
+            year:2024
+        },
+        {
+            subject:"Математика",
+            director:"Иванов Иван Иванович",
+            department:21,
+            formOfStudy:"очная",
+            year:2023
+        },
+        {
+            subject:"Информатика",
+            director:"Самойлов Иван Иванович",
+            department:43,
+            formOfStudy:"вечерняя",
+            year:2024
+        },
+        {
+            subject:"Математика",
+            director:"Иванов Иван Иванович",
+            department:21,
+            formOfStudy:"очная",
+            year:2023
+        },
+        {
+            subject:"Информатика",
+            director:"Самойлов Иван Иванович",
+            department:43,
+            formOfStudy:"вечерняя",
+            year:2024
         }
     ]
     return (
-        <div className="block TableOfTemplate">
+        <Block className="TableOfTemplate">
             <Table striped bordered hover style={{textAlign:"center"}}>
                 <thead>
                     <tr>
@@ -62,7 +106,7 @@ function TableOfTemplate () {
                 <tbody>
                     {masOfTemplate.map((elem) => 
                     <tr>
-                        <td><img src={eye} alt="Скачать" /></td>
+                        <td><Link to="/info" state={elem}><img src={eye} alt="Скачать" /></Link> </td>
                         <td>{elem.subject}</td>
                         <td>{elem.director}</td>
                         <td>{elem.department.toString()}</td>
@@ -72,7 +116,7 @@ function TableOfTemplate () {
                     )}
                 </tbody>
             </Table>
-        </div>
+        </Block>
     )
 }
 

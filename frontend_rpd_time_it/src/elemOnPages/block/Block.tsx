@@ -1,7 +1,10 @@
-function Block() {
+import "./Block.css"
+
+function Block(props: any) {
+    const { children } = props
     return (
-        <div>
-            
+        <div className={"block " + props.className}>
+            {children}
         </div>
     )
 }

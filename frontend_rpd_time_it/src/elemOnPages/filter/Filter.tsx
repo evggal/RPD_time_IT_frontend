@@ -4,12 +4,10 @@ import FormSelect from 'react-bootstrap/FormSelect'
 import { Type } from "typescript"
 import SelectSearch, { SelectSearchOption}  from 'react-select-search';
 import 'react-select-search/style.css'
+import Block from "../block/Block";
+import SuaiButton from "../suaiButton/SuaiButton";
 
 function Filter() {
-    interface option {
-        name: string | number,
-        value: string | number
-    }
     const Kafedra: Array<SelectSearchOption> = [
         {name: "Кафедра 1", value: 1},
         {name: "Кафедра 2", value: 2},
@@ -48,9 +46,9 @@ function Filter() {
     ]
     
     return (
-        <div className="block filter">
+        <Block className="filter">
             <form>
-                <div className="div-select">
+                <div className="div_select">
                 
                 <SelectSearch  options={Kafedra} search={true} placeholder="Кафедра" />
                 <SelectSearch  options={NamePredmeta} search={true} placeholder="Направление" />
@@ -62,10 +60,10 @@ function Filter() {
                 
                 
                 </div>
-                <button  className="button-suai">Искать</button>
+                <SuaiButton className="SuaiButton_blue">Искать</SuaiButton>
             </form>
             
-        </div>
+        </Block>
     )
 }
 

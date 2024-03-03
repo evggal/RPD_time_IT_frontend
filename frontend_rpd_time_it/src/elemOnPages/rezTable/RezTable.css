@@ -1,0 +1,26 @@
+.RezTable {
+    grid-area: RezTable;
+}
+
+.table__button {
+    display: grid;
+    grid-template-areas: 
+    "table__buttonTD1 table__buttonTD1"
+    "table__buttonTD2 table__buttonTD3";
+    grid-template-columns: 50% 50%;
+    gap: 5px;/**/
+    margin: 2px;
+
+}
+
+.table__buttonTD1 {
+    grid-area: table__buttonTD1;
+}
+
+.table__buttonTD2 {
+    grid-area: table__buttonTD2;
+}
+
+.table__buttonTD3 {
+    grid-area: table__buttonTD3;
+}
