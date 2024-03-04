@@ -7,16 +7,7 @@ import 'react-select-search/style.css'
 import Block from "../block/Block";
 import SuaiButton from "../suaiButton/SuaiButton";
 import { useEffect, useState } from "react";
-
-interface searchTempate {
-    faculty?: string;
-    specialtyNumber?: string;
-    groupName?: string;
-    name?: string;
-    numberOfDepartament?: string;
-    typeOfControl?: string;
-    formaObuchenua?: string
-}
+import { searchTempate } from "../../interface/interface"
 
 function Filter() {
     const [facultySearch, setFaculty] = useState<string>()
