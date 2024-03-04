@@ -3,10 +3,11 @@ import "./RezTable.css"
 import Block from "../block/Block"
 import { Table } from "react-bootstrap"
 import SuaiButton from "../suaiButton/SuaiButton"
+import { rpd } from "../../interface/interface"
 
 function RezTable(props: any) {
     const location = useLocation()
-    const data = location.state
+    const data : rpd = location.state
     return (
         <Block className={"RezTable " + props.className}>
             <Table striped bordered hover style={{textAlign:"center"}}>
@@ -16,17 +17,15 @@ function RezTable(props: any) {
                         <th>Руководитель направления</th>
                         <th>Кафедра</th>
                         <th>Форма обучения</th>
-                        <th>Год</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>{data.subject}</td>
-                        <td>{data.director}</td>
-                        <td>{data.department.toString()}</td>
-                        <td>{data.formOfStudy}</td>
-                        <td>{data.year.toString()}</td>
+                        <td>{data.criticalInfo.name}</td>
+                        <td>{data.criticalInfo.numberOfDepartament}</td>
+                        <td>{data.criticalInfo.groupName}</td>
+                        <td>{data.criticalInfo.faculty}</td>
                         <td style={{width:"15vw"}}>
                             <div className="table__button">
                                 <SuaiButton className="table__buttonTD1" href="/" select={true} options={[{name: ".pdf", value: "pdf"}, {name: ".doc", value: "doc"}]}>Скачать </SuaiButton>

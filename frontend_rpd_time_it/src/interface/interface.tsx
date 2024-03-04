@@ -7,3 +7,28 @@ export interface searchTempate {
     typeOfControl?: string;
     formaObuchenua?: string
 }
+export interface Critical {
+    faculty?: string,
+    fo?:string,
+    specialtyNumber?: string,
+    spz?: string,
+    groupName?: string,
+    name?: string,
+    numberOfDepartament?: string,
+    countOfHourLecture?: string,
+    countOfHourPractice?: string,
+    countOfHourLab?: string,
+    countOfHourCourseProject?: string,
+    countOfHourCourseWork?: string,
+    srs?: string,
+    examHours?: string,
+    typeOfCourseProject?: string,
+    typeOfControl?: string,
+}
+export interface rpdinfo{
+    testProp: string
+}
+export interface rpd{
+    criticalInfo: Critical,
+    rpdInfo: rpdinfo
+}
