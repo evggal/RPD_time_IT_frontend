@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 
 function SuaiButton(props: any) {
     const { children } = props;
-    console.log(props.options)
     if (props.select) {
         return (
-            <div className={"SuaiButtonSelect " + props.className}>
+            <div className={"SuaiButtonSelect " + props.className} onClick={props.onClick}>
                 <Link to={props.href} className={"SuaiButton SuaiButton_white SuaiButtonSelect__button "}>
                     {children}
                 </Link>
@@ -21,7 +20,7 @@ function SuaiButton(props: any) {
         )
     } else {
         return (
-            <button className={"SuaiButton " + props.className}>
+            <button className={"SuaiButton " + props.className} onClick={props.onClick}>
                 {children}
             </button>
 
