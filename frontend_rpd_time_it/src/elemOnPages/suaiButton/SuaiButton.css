@@ -1,0 +1,32 @@
+.SuaiButton {
+    padding: 7px 15px;
+    border-radius: 7px;
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.SuaiButton_blue {
+    background-color: var(--suai-button-color);
+    border: 1px var(--suai-button-color) solid;
+    color:#fff;
+}
+
+.SuaiButton_white {
+    color:var(--suai-button-color);
+    border: 1px var(--suai-button-color) solid;
+}
+
+.SuaiButtonSelect {
+    display: felx;
+}
+
+.SuaiButtonSelect__button {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.SuaiButtonSelect__select {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}

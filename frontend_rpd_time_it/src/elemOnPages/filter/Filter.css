@@ -1,0 +1,10 @@
+.filter {
+    grid-area: filter;
+}
+
+.div_select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
