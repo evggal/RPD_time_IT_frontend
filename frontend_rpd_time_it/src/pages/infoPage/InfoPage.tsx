@@ -8,7 +8,7 @@ import "./InfoPage.css"
 function InfoPage () {
     return (
         <div className="InfoPage">
-        
+        <Header/>
         <InfoCard/>
         <Description/>
         <RezTable/>
