@@ -18,7 +18,8 @@ export const SearchRpd = async (filter: searchTempate) : Promise<Array<rpd>> => 
         examHours: undefined,
         typeOfCourseProject: undefined
     }
-    const response = await window.fetch('https://localhost:7014/RPD/SearchRpd', {
+    console.log(JSON.stringify(dto))
+    const response = await window.fetch('http://localhost:5202/RPD/SearchRpd', {
         method: 'POST',
         headers: {
           'content-type': 'application/json;charset=UTF-8',
@@ -29,7 +30,7 @@ export const SearchRpd = async (filter: searchTempate) : Promise<Array<rpd>> => 
     return content
 }
 export const GetAllCritical = async () : Promise<Array<Critical>> => {
-    const response = await window.fetch('https://localhost:7014/RPD/GetCriticalInfos', {
+    const response = await window.fetch('http://localhost:5202/RPD/GetCriticalInfos', {
         headers: {
           'content-type': 'application/json;charset=UTF-8',
         },
@@ -39,7 +40,7 @@ export const GetAllCritical = async () : Promise<Array<Critical>> => {
 }
 
 export const GetAllCriticalByCritical = async (critical: Critical) : Promise<Array<Critical>> => {
-    const response = await window.fetch('https://localhost:7014/RPD/SearchCriticalInfos', {
+    const response = await window.fetch('http://localhost:5202/RPD/SearchCriticalInfos', {
         method: 'POST',
         headers: {
           'content-type': 'application/json;charset=UTF-8',

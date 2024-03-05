@@ -9,6 +9,7 @@ import {searchTempate, Critical, rpd} from "../../interface/interface"
 
 function Filter(props:
     {
+        setSelectedRpds: React.Dispatch<React.SetStateAction<Array<rpd>>>,
         setRpds: React.Dispatch<React.SetStateAction<Array<rpd>>>,
         setLoader: React.Dispatch<React.SetStateAction<boolean>>},
 
@@ -22,6 +23,7 @@ function Filter(props:
     const [formaObuchenuaSearch, setFormaObuchenuaSearch] = useState<string>()
     const [search, setSearch] = useState<searchTempate>({} as searchTempate)
     const createSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        props.setSelectedRpds([])
         e.preventDefault()
         props.setLoader(true)
         let result: Array<rpd> = await SearchRpd({faculty: facultySearch,

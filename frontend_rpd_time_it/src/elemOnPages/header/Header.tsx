@@ -1,10 +1,11 @@
 import "./Header.css"
 import logo from "../../images/guap.svg"
-
-function Header () {
+import { Link, redirect, useNavigate } from "react-router-dom";
+function Header() {
+    const route = useNavigate();
     return (
         <header className="header">
-            <img src={logo} className="header__logo"></img>
+            <img style={{cursor:"pointer"}} onClick={()=>route("/")} src={logo} className="header__logo"></img>
         </header>
     )
 }

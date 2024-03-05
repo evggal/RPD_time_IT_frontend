@@ -11,9 +11,21 @@ function InfoCard () {
     return (
         <Block className="InfoCard">
             <h1>{data.criticalInfo.name}</h1>
-            <p>{data.criticalInfo.numberOfDepartament}</p>
-            <p>{data.criticalInfo.groupName}</p>
-            <p>{data.criticalInfo.faculty}</p>
+            <p>Кафедра - {data.criticalInfo.numberOfDepartament}</p>
+            <p>группа - {data.criticalInfo.groupName}</p>
+            <p>факультет - {data.criticalInfo.faculty}</p>
+            <p>номер специальности - {data.criticalInfo.specialtyNumber}</p>
+            <p>количество часов по курсовому проекту - {data.criticalInfo.countOfHourCourseProject}</p>
+            <p>количество часов по курсовой работе - {data.criticalInfo.countOfHourCourseWork}</p>
+            <p>количество часов по лекциям- {data.criticalInfo.countOfHourLecture}</p>
+            <p>количество часов по практикам - {data.criticalInfo.countOfHourPractice}</p>
+            <p>количество часов по лабораторным работам - {data.criticalInfo.countOfHourLab}</p>
+            <p>количество часов по лабораторным работам - {data.criticalInfo.countOfHourLab}</p>
+            <p>тип контроля - {data.criticalInfo.typeOfControl}</p>
+            <p>форма обучения - {data.criticalInfo.fo}</p>
+            <p>СРС - {data.criticalInfo.srs}</p>
+            <p>СПЗ - {data.criticalInfo.spz}</p>
+            
         </Block>
     )
 }

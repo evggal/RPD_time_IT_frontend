@@ -9,7 +9,7 @@ function Description () {
     console.log(data)
     return (
         <Block className="Description">
-            <p>Какое-то описание</p>
+            <p>Тестовое поле - {data.rpdInfo.testProp}</p>
         </Block>
     )
 }
