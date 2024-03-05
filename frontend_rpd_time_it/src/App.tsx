@@ -18,6 +18,7 @@ function App() {
   const [selectedRpds, setSelectedRpds] = useState<Array<rpd>>([])
   const [rpds, setRpds] = useState<Array<rpd>>([])
   useEffect(() => {
+    console.log("useEfffffffect")
     SearchRpd({}).then((data) => {
       setRpds(data)
     })

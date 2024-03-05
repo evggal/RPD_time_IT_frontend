@@ -39,22 +39,22 @@ function ChangeTemplatePage(props:
     const [examHoursSearch, setExamHoursSearch] = useState<string>()
     const [typeOfCourseProjectSearch, setTypeOfCourseProjectSearch] = useState<string>()
 
-    const [Faculty, setFaculty] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [Kafedra, setKafedra] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [SpecialtyNumber, setSpecialtyNumber] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [GroupName, setGroupName] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [NamePredmeta, setNamePredmeta] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [FormaObuchenua, setFormaObuchenua] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [TypeofControl, setTypeofControl] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [CountOfHourLecture, setCountOfHourLecture] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [CountOfHourPractice, setCountOfHourPractice] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [CountOfHourLab, setCountOfHourLab] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [CountOfHourCourseProject, setCountOfHourCourseProject] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [CountOfHourCourseWork, setCountOfHourCourseWork] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [Spz, setSpz] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [Srs, setSrs] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [ExamHours, setExamHours] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
-    const [TypeOfCourseProject, setTypeOfCourseProject] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
+    const [Faculty, setFaculty] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [Kafedra, setKafedra] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [SpecialtyNumber, setSpecialtyNumber] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [GroupName, setGroupName] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [NamePredmeta, setNamePredmeta] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [FormaObuchenua, setFormaObuchenua] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [TypeofControl, setTypeofControl] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [CountOfHourLecture, setCountOfHourLecture] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [CountOfHourPractice, setCountOfHourPractice] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [CountOfHourLab, setCountOfHourLab] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [CountOfHourCourseProject, setCountOfHourCourseProject] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [CountOfHourCourseWork, setCountOfHourCourseWork] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [Spz, setSpz] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [Srs, setSrs] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [ExamHours, setExamHours] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
+    const [TypeOfCourseProject, setTypeOfCourseProject] = useState<Array<SelectSearchOption>>([{ name: "-", value: "None" }])
 
     useEffect(() => {
         const init = async () => {
@@ -84,23 +84,23 @@ function ChangeTemplatePage(props:
                     return {...n, flag: true, obj:result[0]}
                 } )
             }
-            setFaculty([{ name: "-", value: "-1" }])
-            setFaculty([{ name: "-", value: "-1" }])
-            setKafedra([{ name: "-", value: "-1" }])
-            setSpecialtyNumber([{ name: "-", value: "-1" }])
-            setGroupName([{ name: "-", value: "-1" }])
-            setNamePredmeta([{ name: "-", value: "-1" }])
-            setFormaObuchenua([{ name: "-", value: "-1" }])
-            setTypeofControl([{ name: "-", value: "-1" }])
-            setCountOfHourLecture([{ name: "-", value: "-1" }])
-            setCountOfHourPractice([{ name: "-", value: "-1" }])
-            setCountOfHourLab([{ name: "-", value: "-1" }])
-            setCountOfHourCourseProject([{ name: "-", value: "-1" }])
-            setCountOfHourCourseWork([{ name: "-", value: "-1" }])
-            setSpz([{ name: "-", value: "-1" }])
-            setSrs([{ name: "-", value: "-1" }])
-            setExamHours([{ name: "-", value: "-1" }])
-            setTypeOfCourseProject([{ name: "-", value: "-1" }])
+            setFaculty([{ name: "-", value: "None" }])
+            setFaculty([{ name: "-", value: "None" }])
+            setKafedra([{ name: "-", value: "None" }])
+            setSpecialtyNumber([{ name: "-", value: "None" }])
+            setGroupName([{ name: "-", value: "None" }])
+            setNamePredmeta([{ name: "-", value: "None" }])
+            setFormaObuchenua([{ name: "-", value: "None" }])
+            setTypeofControl([{ name: "-", value: "None" }])
+            setCountOfHourLecture([{ name: "-", value: "None" }])
+            setCountOfHourPractice([{ name: "-", value: "None" }])
+            setCountOfHourLab([{ name: "-", value: "None" }])
+            setCountOfHourCourseProject([{ name: "-", value: "None" }])
+            setCountOfHourCourseWork([{ name: "-", value: "None" }])
+            setSpz([{ name: "-", value: "None" }])
+            setSrs([{ name: "-", value: "None" }])
+            setExamHours([{ name: "-", value: "None" }])
+            setTypeOfCourseProject([{ name: "-", value: "None" }])
             result.map(crit => {
                 setFaculty((f: Array<SelectSearchOption>) => {
                     if (f.map(f => f.value).includes(crit.faculty)) {
@@ -193,7 +193,7 @@ function ChangeTemplatePage(props:
                     return [...f, { value: crit.examHours, name: crit.examHours as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
                 })
                 setTypeOfCourseProject((f: Array<SelectSearchOption>) => {
-                    if (f.map(f => f.value).includes(crit.typeOfCourseProject)) {
+                    if (f.map(f => f.value).includes(crit.typeOfCourseProject) || crit.typeOfCourseProject === '') {
                         return [...f]
                     }
                     return [...f, { value: crit.typeOfCourseProject, name: crit.typeOfCourseProject as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
