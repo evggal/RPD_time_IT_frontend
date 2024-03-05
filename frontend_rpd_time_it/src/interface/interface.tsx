@@ -5,7 +5,12 @@ export interface searchTempate {
     name?: string;
     numberOfDepartament?: string;
     typeOfControl?: string;
-    formaObuchenua?: string
+    formaObuchenua?: string;
+    countOfHourLecture?: string;
+    countOfHourPractice?: string;
+    countOfHourLab?: string;
+    countOfHourCourseProject?: string;
+    countOfHourCourseWork?: string
 }
 export interface Critical {
     faculty?: string,
