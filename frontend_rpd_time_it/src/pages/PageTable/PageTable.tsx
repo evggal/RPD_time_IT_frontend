@@ -5,16 +5,18 @@ import TableOfTemplate from "../../elemOnPages/tableOfTemplate/TableOfTemplate";
 import { useState } from "react";
 import { rpd } from "../../interface/interface";
 
-function PageTable() {
-    const [rpds, setRpds] = useState<Array<rpd>>([])
+function PageTable(props: {
+    setSelectedRpds: React.Dispatch<React.SetStateAction<rpd[]>>,
+    selected: Array<rpd>
+    setRpds: React.Dispatch<React.SetStateAction<rpd[]>>,
+    rpds: Array<rpd>
+}) {
     const [Loader, setLoader] = useState<boolean>(false)
-
-
     return (
         <div className="PageTable">
-        <Header/>
-        <Filter setLoader={setLoader} setRpds = {setRpds}/>
-        <TableOfTemplate Loader={Loader} rpds = {rpds} />
+        
+        <Filter setSelectedRpds={props.setSelectedRpds} setLoader={setLoader} setRpds = {props.setRpds}/>
+        <TableOfTemplate selected={props.selected} setSelectedRpds={props.setSelectedRpds} Loader={Loader} rpds = {props.rpds} />
         </div>
     )
 }
