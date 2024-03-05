@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 import { Critical, rpd } from "../../interface/interface";
 import { GetAllCritical, GetAllCriticalByCriticals, SearchRpd } from "../../ApiAccess/RpdRepository";
 import SuaiButton from "../suaiButton/SuaiButton";
+import { Link } from "react-router-dom";
+
+
 
 function ChangeTemplatePage(props:
     {
@@ -13,6 +16,9 @@ function ChangeTemplatePage(props:
     },
 
 ) {
+    const [buttonNextPage, setButtonNextPage] = useState(false)
+
+
     const [facultySearch, setFacultySearch] = useState<string>()
     const [specialtyNumberSearch, setSpecialtyNumberSearch] = useState<string>()
     const [groupNameSearch, setGroupNameSearch] = useState<string>()
@@ -70,6 +76,9 @@ function ChangeTemplatePage(props:
             console.log(1, JSON.stringify(data))
             let result: Array<Critical> = await GetAllCriticalByCriticals(data)
             console.log(result, 0)
+            if (result.length == 1) {
+                setButtonNextPage(n => n = true)
+            }
             setFaculty([{ name: "-", value: "-1" }])
             setFaculty([{ name: "-", value: "-1" }])
             setKafedra([{ name: "-", value: "-1" }])
@@ -116,7 +125,7 @@ function ChangeTemplatePage(props:
                     if (f.map(f => f.value).includes(crit.name)) {
                         return [...f]
                     }
-                    return [...f, { value: crit.name, name: crit.name as string }].sort((a, b) => (a.name > b.name) ? 1 :-1 )
+                    return [...f, { value: crit.name, name: crit.name as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
                 })
                 setFormaObuchenua((f: Array<SelectSearchOption>) => {
                     if (f.map(f => f.value).includes(crit.fo)) {
@@ -134,7 +143,7 @@ function ChangeTemplatePage(props:
                     if (f.map(f => f.value).includes(crit.countOfHourLecture)) {
                         return [...f]
                     }
-                    return [...f, { value: crit.countOfHourLecture, name: crit.countOfHourLecture as string }].sort((a, b) => (a.name > b.name) ? 1 :-1 )
+                    return [...f, { value: crit.countOfHourLecture, name: crit.countOfHourLecture as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
                 })
                 setCountOfHourPractice((f: Array<SelectSearchOption>) => {
                     if (f.map(f => f.value).includes(crit.countOfHourPractice)) {
@@ -227,10 +236,17 @@ function ChangeTemplatePage(props:
                     <SelectSearch options={Array.from(TypeOfCourseProject)} search={true} placeholder="Тип курсового проекта" value={typeOfCourseProjectSearch?.toString()} onChange={(e) => { setTypeOfCourseProjectSearch(n => n = e.toString()) }} />
 
                 </div>
-                <SuaiButton className="SuaiButton_blue" onClick={(e: React.ChangeEvent<HTMLInputElement>) => { e.preventDefault(); }}>Искать</SuaiButton>
+
+                {buttonNextPage ? 
+                <Link to="/changeTemplate2">
+                    <SuaiButton className="SuaiButton_blue">Далее</SuaiButton>
+                </Link> : <></>}
+
             </form>
         </Block>
     )
 }
+
+
 
 export default ChangeTemplatePage
