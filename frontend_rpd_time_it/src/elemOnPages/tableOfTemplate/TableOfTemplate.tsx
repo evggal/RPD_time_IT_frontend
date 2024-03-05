@@ -28,11 +28,18 @@ function TableOfTemplate(props:
                     </tr>
                 </thead>
                 <tbody>
+                <tr>
+                        <td><Link to="/info" state={{criticalInfo:{name:"Информатика",numberOfDepartament:"Кафедра 41",fo:"О",typeOfControl:"Экзамен"}}}><img src={eye} alt="Скачать" /></Link> </td>
+                        <td>Информатика</td>
+                        <td>Кафедра 41</td>
+                        <td>О</td>
+                        <td>Экзамен</td>
+                    </tr>
                     {props.rpds.map((elem) => 
                     <tr>
                         <td><Link to="/info" state={elem}><img src={eye} alt="Скачать" /></Link> </td>
                         <td>{elem.criticalInfo.name}</td>
-                        <td>{elem.criticalInfo.numberOfDepartament}</td>
+                        <td>Кафедра {elem.criticalInfo.numberOfDepartament}</td>
                         <td>{elem.criticalInfo.fo}</td>
                         <td>{elem.criticalInfo.typeOfControl}</td>
                     </tr>
