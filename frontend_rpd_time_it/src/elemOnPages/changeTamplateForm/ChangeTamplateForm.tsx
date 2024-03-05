@@ -9,9 +9,7 @@ import SuaiButton from "../suaiButton/SuaiButton";
 
 function ChangeTemplatePage(props:
     {
-        setSelectedRpds: React.Dispatch<React.SetStateAction<Array<rpd>>>,
-        setRpds: React.Dispatch<React.SetStateAction<Array<rpd>>>,
-        setLoader: React.Dispatch<React.SetStateAction<boolean>>
+        setCritical: React.Dispatch<React.SetStateAction<Critical>>,
     },
 
 ) {
@@ -32,29 +30,6 @@ function ChangeTemplatePage(props:
     const [examHoursSearch, setExamHoursSearch] = useState<string>()
     const [typeOfCourseProjectSearch, setTypeOfCourseProjectSearch] = useState<string>()
 
-    const createSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-        props.setSelectedRpds([])
-        e.preventDefault()
-        props.setLoader(true)
-
-        let result: Array<rpd> = await SearchRpd({
-            faculty: facultySearch == "" ? undefined : facultySearch,
-            specialtyNumber: specialtyNumberSearch == "" ? undefined : specialtyNumberSearch,
-            groupName: groupNameSearch == "" ? undefined : groupNameSearch,
-            name: nameSearch == "" ? undefined : nameSearch,
-            numberOfDepartament: numberOfDepartamentSearch == "" ? undefined : numberOfDepartamentSearch,
-            typeOfControl: typeOfControlSearch == "" ? undefined : typeOfControlSearch,
-            formaObuchenua: formaObuchenuaSearch == "" ? undefined : formaObuchenuaSearch,
-            countOfHourLecture: countOfHourLectureSearch == "" ? undefined : countOfHourLectureSearch,
-            countOfHourPractice: countOfHourPracticeSearch == "" ? undefined : countOfHourPracticeSearch,
-            countOfHourLab: countOfHourLabSearch == "" ? undefined : countOfHourLabSearch,
-            countOfHourCourseProject: countOfHourCourseProjectSearch == "" ? undefined : countOfHourCourseProjectSearch,
-            countOfHourCourseWork: countOfHourCourseWorkSearch == "" ? undefined : countOfHourCourseWorkSearch
-        })
-        props.setRpds(result)
-        props.setLoader(false)
-
-    }
     const [Faculty, setFaculty] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
     const [Kafedra, setKafedra] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
     const [SpecialtyNumber, setSpecialtyNumber] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
@@ -252,7 +227,7 @@ function ChangeTemplatePage(props:
                     <SelectSearch options={Array.from(TypeOfCourseProject)} search={true} placeholder="Тип курсового проекта" value={typeOfCourseProjectSearch?.toString()} onChange={(e) => { setTypeOfCourseProjectSearch(n => n = e.toString()) }} />
 
                 </div>
-                <SuaiButton className="SuaiButton_blue" onClick={(e: React.ChangeEvent<HTMLInputElement>) => { createSearch(e) }}>Искать</SuaiButton>
+                <SuaiButton className="SuaiButton_blue" onClick={(e: React.ChangeEvent<HTMLInputElement>) => { e.preventDefault(); }}>Искать</SuaiButton>
             </form>
         </Block>
     )

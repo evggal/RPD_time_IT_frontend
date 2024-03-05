@@ -7,7 +7,7 @@ import { randomInt } from 'crypto';
 import PageTable from './pages/PageTable/PageTable';
 import InfoPage from './pages/infoPage/InfoPage';
 import ManagePage from './pages/ManagePage/Manage';
-import { rpd } from './interface/interface';
+import { Critical, rpd } from './interface/interface';
 import Header from './elemOnPages/header/Header';
 import { GetAllCritical, SearchRpd } from './ApiAccess/RpdRepository';
 import ChangeTemplatePage from './pages/changeTemplatePage/ChangeTemplatePage';
@@ -28,7 +28,7 @@ function App() {
         <Route path="/" element={<PageTable rpds={rpds} setRpds={setRpds} selected={selectedRpds} setSelectedRpds={setSelectedRpds}/>} />
           <Route path="/info" element={<InfoPage />} />
           <Route path="/manage" element={<ManagePage selected={selectedRpds}/>} />
-          <Route path="/changeTemplate" element={<ChangeTemplatePage setRpds={setRpds} selected={selectedRpds} setSelectedRpds={setSelectedRpds}/>}  />
+          <Route path="/changeTemplate" element={<ChangeTemplatePage/>}  />
       </Routes>
       </BrowserRouter>
     </div>
