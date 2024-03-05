@@ -18,8 +18,9 @@ export const SearchRpd = async (filter: searchTempate) : Promise<Array<rpd>> => 
         examHours: undefined,
         typeOfCourseProject: undefined
     }
-    console.log(JSON.stringify(dto))
-    const response = await window.fetch('http://localhost:5202/RPD/SearchRpd', {
+
+    console.log(JSON.stringify(dto), 0)
+    const response = await window.fetch(process.env.REACT_APP_API + '/RPD/SearchRpd', {
         method: 'POST',
         headers: {
           'content-type': 'application/json;charset=UTF-8',
@@ -30,7 +31,9 @@ export const SearchRpd = async (filter: searchTempate) : Promise<Array<rpd>> => 
     return content
 }
 export const GetAllCritical = async () : Promise<Array<Critical>> => {
-    const response = await window.fetch('http://localhost:5202/RPD/GetCriticalInfos', {
+
+    const response = await window.fetch(process.env.REACT_APP_API + '/RPD/GetCriticalInfos', {
+
         headers: {
           'content-type': 'application/json;charset=UTF-8',
         },
@@ -40,7 +43,8 @@ export const GetAllCritical = async () : Promise<Array<Critical>> => {
 }
 
 export const GetAllCriticalByCritical = async (critical: Critical) : Promise<Array<Critical>> => {
-    const response = await window.fetch('http://localhost:5202/RPD/SearchCriticalInfos', {
+    const response = await window.fetch(process.env.REACT_APP_API + '/RPD/SearchCriticalInfos', {
+
         method: 'POST',
         headers: {
           'content-type': 'application/json;charset=UTF-8',

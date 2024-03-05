@@ -46,6 +46,7 @@ function TableOfTemplate(props:
                     </tr>
                 </thead>
                 <tbody>
+
                     {props.rpds.map((elem, index) => 
                         <tr>
                             <td><input type="checkbox" checked={props.selected.includes(elem)} onChange={(value) => {
@@ -56,9 +57,11 @@ function TableOfTemplate(props:
                                     props.setSelectedRpds(props.selected.filter(item => item !== elem))
                                 }
                             }}></input></td>
+
+
                         <td><Link to="/info" state={elem}><img src={eye} alt="Скачать" /></Link> </td>
                         <td>{elem.criticalInfo.name}</td>
-                        <td>{elem.criticalInfo.numberOfDepartament}</td>
+                        <td>Кафедра {elem.criticalInfo.numberOfDepartament}</td>
                         <td>{elem.criticalInfo.fo}</td>
                         <td>{elem.criticalInfo.typeOfControl}</td>
                     </tr>
