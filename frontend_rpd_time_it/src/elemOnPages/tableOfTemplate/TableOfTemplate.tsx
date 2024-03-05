@@ -42,11 +42,6 @@ function TableOfTemplate(props:
 
                 <thead>
                     <tr>
-                        <td></td>
-                        <td><Link to="/changeTemplate"><img src={plus} alt="Скачать" /></Link> </td>
-                        <td colSpan={4}>Создать новый РПД</td>
-                    </tr>
-                    <tr>
                         <th></th>
                         <th></th>
                         <th>Предмет</th>
@@ -54,6 +49,12 @@ function TableOfTemplate(props:
                         <th>Форма обучения</th>
                         <th>Тип контроля</th>
                     </tr>
+                    <tr>
+                        <td></td>
+                        <td><Link to="/changeTemplate"><img src={plus} alt="Скачать" /></Link> </td>
+                        <td colSpan={4}>Создать новый РПД</td>
+                    </tr>
+                
                 </thead>
                 <tbody>
 
