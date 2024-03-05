@@ -1,13 +1,13 @@
-import "./Filter.css"
+import Block from "../../elemOnPages/block/Block"
+import Header from "../../elemOnPages/header/Header"
 import SelectSearch, { SelectSearchOption } from 'react-select-search';
-import 'react-select-search/style.css'
-import Block from "../block/Block";
-import SuaiButton from "../suaiButton/SuaiButton";
+import "./ChangeTamplateForm.css"
 import { useEffect, useState } from "react";
-import { SearchRpd, GetAllCritical } from "../../ApiAccess/RpdRepository"
-import { searchTempate, Critical, rpd } from "../../interface/interface"
+import { Critical, rpd } from "../../interface/interface";
+import { GetAllCritical, GetAllCriticalByCriticals, SearchRpd } from "../../ApiAccess/RpdRepository";
+import SuaiButton from "../suaiButton/SuaiButton";
 
-function Filter(props:
+function ChangeTemplatePage(props:
     {
         setSelectedRpds: React.Dispatch<React.SetStateAction<Array<rpd>>>,
         setRpds: React.Dispatch<React.SetStateAction<Array<rpd>>>,
@@ -27,6 +27,10 @@ function Filter(props:
     const [countOfHourLabSearch, setCountOfHourLabSearch] = useState<string>()
     const [countOfHourCourseProjectSearch, setCountOfHourCourseProjectSearch] = useState<string>()
     const [countOfHourCourseWorkSearch, setCountOfHourCourseWorkSearch] = useState<string>()
+    const [spzSearch, setSpzSearch] = useState<string>()
+    const [srsSearch, setSrsSearch] = useState<string>()
+    const [examHoursSearch, setExamHoursSearch] = useState<string>()
+    const [typeOfCourseProjectSearch, setTypeOfCourseProjectSearch] = useState<string>()
 
     const createSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
         props.setSelectedRpds([])
@@ -34,18 +38,18 @@ function Filter(props:
         props.setLoader(true)
 
         let result: Array<rpd> = await SearchRpd({
-            faculty: facultySearch == "-1" ? undefined : facultySearch,
-            specialtyNumber: specialtyNumberSearch == "-1" ? undefined : specialtyNumberSearch,
-            groupName: groupNameSearch == "-1" ? undefined : groupNameSearch,
-            name: nameSearch == "-1" ? undefined : nameSearch,
-            numberOfDepartament: numberOfDepartamentSearch == "-1" ? undefined : numberOfDepartamentSearch,
-            typeOfControl: typeOfControlSearch == "-1" ? undefined : typeOfControlSearch,
-            formaObuchenua: formaObuchenuaSearch == "-1" ? undefined : formaObuchenuaSearch,
-            countOfHourLecture: countOfHourLectureSearch == "-1" ? undefined : countOfHourLectureSearch,
-            countOfHourPractice: countOfHourPracticeSearch == "-1" ? undefined : countOfHourPracticeSearch,
-            countOfHourLab: countOfHourLabSearch == "-1" ? undefined : countOfHourLabSearch,
-            countOfHourCourseProject: countOfHourCourseProjectSearch == "-1" ? undefined : countOfHourCourseProjectSearch,
-            countOfHourCourseWork: countOfHourCourseWorkSearch == "-1" ? undefined : countOfHourCourseWorkSearch
+            faculty: facultySearch == "" ? undefined : facultySearch,
+            specialtyNumber: specialtyNumberSearch == "" ? undefined : specialtyNumberSearch,
+            groupName: groupNameSearch == "" ? undefined : groupNameSearch,
+            name: nameSearch == "" ? undefined : nameSearch,
+            numberOfDepartament: numberOfDepartamentSearch == "" ? undefined : numberOfDepartamentSearch,
+            typeOfControl: typeOfControlSearch == "" ? undefined : typeOfControlSearch,
+            formaObuchenua: formaObuchenuaSearch == "" ? undefined : formaObuchenuaSearch,
+            countOfHourLecture: countOfHourLectureSearch == "" ? undefined : countOfHourLectureSearch,
+            countOfHourPractice: countOfHourPracticeSearch == "" ? undefined : countOfHourPracticeSearch,
+            countOfHourLab: countOfHourLabSearch == "" ? undefined : countOfHourLabSearch,
+            countOfHourCourseProject: countOfHourCourseProjectSearch == "" ? undefined : countOfHourCourseProjectSearch,
+            countOfHourCourseWork: countOfHourCourseWorkSearch == "" ? undefined : countOfHourCourseWorkSearch
         })
         props.setRpds(result)
         props.setLoader(false)
@@ -63,10 +67,51 @@ function Filter(props:
     const [CountOfHourLab, setCountOfHourLab] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
     const [CountOfHourCourseProject, setCountOfHourCourseProject] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
     const [CountOfHourCourseWork, setCountOfHourCourseWork] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
+    const [Spz, setSpz] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
+    const [Srs, setSrs] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
+    const [ExamHours, setExamHours] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
+    const [TypeOfCourseProject, setTypeOfCourseProject] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
 
     useEffect(() => {
         const init = async () => {
-            let result: Array<Critical> = await GetAllCritical()
+            const data: Critical = {
+                faculty: facultySearch,
+                numberOfDepartament: numberOfDepartamentSearch,
+                specialtyNumber: specialtyNumberSearch,
+                groupName: groupNameSearch,
+                name: nameSearch,
+                fo: formaObuchenuaSearch,
+                typeOfControl: typeOfControlSearch,
+                countOfHourLecture: countOfHourLectureSearch,
+                countOfHourPractice: countOfHourPracticeSearch,
+                countOfHourLab: countOfHourLabSearch,
+                countOfHourCourseProject: countOfHourCourseProjectSearch,
+                countOfHourCourseWork: countOfHourCourseWorkSearch,
+                spz: spzSearch,
+                srs: srsSearch,
+                examHours: examHoursSearch,
+                typeOfCourseProject: typeOfCourseProjectSearch
+            };
+            console.log(1, JSON.stringify(data))
+            let result: Array<Critical> = await GetAllCriticalByCriticals(data)
+            console.log(result, 0)
+            setFaculty([{ name: "-", value: "-1" }])
+            setFaculty([{ name: "-", value: "-1" }])
+            setKafedra([{ name: "-", value: "-1" }])
+            setSpecialtyNumber([{ name: "-", value: "-1" }])
+            setGroupName([{ name: "-", value: "-1" }])
+            setNamePredmeta([{ name: "-", value: "-1" }])
+            setFormaObuchenua([{ name: "-", value: "-1" }])
+            setTypeofControl([{ name: "-", value: "-1" }])
+            setCountOfHourLecture([{ name: "-", value: "-1" }])
+            setCountOfHourPractice([{ name: "-", value: "-1" }])
+            setCountOfHourLab([{ name: "-", value: "-1" }])
+            setCountOfHourCourseProject([{ name: "-", value: "-1" }])
+            setCountOfHourCourseWork([{ name: "-", value: "-1" }])
+            setSpz([{ name: "-", value: "-1" }])
+            setSrs([{ name: "-", value: "-1" }])
+            setExamHours([{ name: "-", value: "-1" }])
+            setTypeOfCourseProject([{ name: "-", value: "-1" }])
             result.map(crit => {
                 setFaculty((f: Array<SelectSearchOption>) => {
                     if (f.map(f => f.value).includes(crit.faculty)) {
@@ -96,7 +141,7 @@ function Filter(props:
                     if (f.map(f => f.value).includes(crit.name)) {
                         return [...f]
                     }
-                    return [...f, { value: crit.name, name: crit.name as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
+                    return [...f, { value: crit.name, name: crit.name as string }].sort((a, b) => (a.name > b.name) ? 1 :-1 )
                 })
                 setFormaObuchenua((f: Array<SelectSearchOption>) => {
                     if (f.map(f => f.value).includes(crit.fo)) {
@@ -114,7 +159,7 @@ function Filter(props:
                     if (f.map(f => f.value).includes(crit.countOfHourLecture)) {
                         return [...f]
                     }
-                    return [...f, { value: crit.countOfHourLecture, name: crit.countOfHourLecture as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
+                    return [...f, { value: crit.countOfHourLecture, name: crit.countOfHourLecture as string }].sort((a, b) => (a.name > b.name) ? 1 :-1 )
                 })
                 setCountOfHourPractice((f: Array<SelectSearchOption>) => {
                     if (f.map(f => f.value).includes(crit.countOfHourPractice)) {
@@ -140,12 +185,51 @@ function Filter(props:
                     }
                     return [...f, { value: crit.countOfHourCourseWork, name: crit.countOfHourCourseWork as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
                 })
+                setSpz((f: Array<SelectSearchOption>) => {
+                    if (f.map(f => f.value).includes(crit.spz)) {
+                        return [...f]
+                    }
+                    return [...f, { value: crit.spz, name: crit.spz as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
+                })
+                setSrs((f: Array<SelectSearchOption>) => {
+                    if (f.map(f => f.value).includes(crit.srs)) {
+                        return [...f]
+                    }
+                    return [...f, { value: crit.srs, name: crit.srs as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
+                })
+                setExamHours((f: Array<SelectSearchOption>) => {
+                    if (f.map(f => f.value).includes(crit.examHours)) {
+                        return [...f]
+                    }
+                    return [...f, { value: crit.examHours, name: crit.examHours as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
+                })
+                setTypeOfCourseProject((f: Array<SelectSearchOption>) => {
+                    if (f.map(f => f.value).includes(crit.typeOfCourseProject)) {
+                        return [...f]
+                    }
+                    return [...f, { value: crit.typeOfCourseProject, name: crit.typeOfCourseProject as string }].sort((a, b) => (a.name > b.name) ? 1 : -1)
+                })
             })
         }
         init()
 
-
-    }, [])
+        console.log('useEffect run')
+    }, [facultySearch,
+        specialtyNumberSearch,
+        groupNameSearch,
+        nameSearch,
+        numberOfDepartamentSearch,
+        typeOfControlSearch,
+        formaObuchenuaSearch,
+        countOfHourLectureSearch,
+        countOfHourPracticeSearch,
+        countOfHourLabSearch,
+        countOfHourCourseProjectSearch,
+        countOfHourCourseWorkSearch,
+        spzSearch,
+        srsSearch,
+        examHoursSearch,
+        typeOfCourseProjectSearch,])
     return (
         <Block className="filter">
             <form>
@@ -162,6 +246,10 @@ function Filter(props:
                     <SelectSearch options={Array.from(CountOfHourLab)} search={true} placeholder="Лабы часы" value={countOfHourLabSearch?.toString()} onChange={(e) => { setCountOfHourLabSearch(n => n = e.toString()) }} />
                     <SelectSearch options={Array.from(CountOfHourCourseProject)} search={true} placeholder="Курсовой проект часы" value={countOfHourCourseProjectSearch?.toString()} onChange={(e) => { setCountOfHourCourseProjectSearch(n => n = e.toString()) }} />
                     <SelectSearch options={Array.from(CountOfHourCourseWork)} search={true} placeholder="Курсовая работа часы" value={countOfHourCourseWorkSearch?.toString()} onChange={(e) => { setCountOfHourCourseWorkSearch(n => n = e.toString()) }} />
+                    <SelectSearch options={Array.from(Spz)} search={true} placeholder="Spz" value={spzSearch?.toString()} onChange={(e) => { setSpzSearch(n => n = e.toString()) }} />
+                    <SelectSearch options={Array.from(Srs)} search={true} placeholder="Самостоятельная работа студента часы" value={srsSearch?.toString()} onChange={(e) => { setSrsSearch(n => n = e.toString()) }} />
+                    <SelectSearch options={Array.from(ExamHours)} search={true} placeholder="Экзамен часы" value={examHoursSearch?.toString()} onChange={(e) => { setExamHoursSearch(n => n = e.toString()) }} />
+                    <SelectSearch options={Array.from(TypeOfCourseProject)} search={true} placeholder="Тип курсового проекта" value={typeOfCourseProjectSearch?.toString()} onChange={(e) => { setTypeOfCourseProjectSearch(n => n = e.toString()) }} />
 
                 </div>
                 <SuaiButton className="SuaiButton_blue" onClick={(e: React.ChangeEvent<HTMLInputElement>) => { createSearch(e) }}>Искать</SuaiButton>
@@ -170,4 +258,4 @@ function Filter(props:
     )
 }
 
-export default Filter
+export default ChangeTemplatePage

@@ -14,7 +14,7 @@ function PageTable(props: {
     const [Loader, setLoader] = useState<boolean>(false)
     return (
         <div className="PageTable">
-        
+        <Header/>
         <Filter setSelectedRpds={props.setSelectedRpds} setLoader={setLoader} setRpds = {props.setRpds}/>
         <TableOfTemplate selected={props.selected} setSelectedRpds={props.setSelectedRpds} Loader={Loader} rpds = {props.rpds} />
         </div>

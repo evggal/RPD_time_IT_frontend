@@ -4,17 +4,17 @@
     border: none;
     display: inline-block;
     text-decoration: none;
-}
-
-.SuaiButton_blue {
     background-color: var(--suai-button-color);
     border: 1px var(--suai-button-color) solid;
     color:#fff;
+    margin: 2px;
 }
+
 
 .SuaiButton_white {
     color:var(--suai-button-color);
     border: 1px var(--suai-button-color) solid;
+    background: none;
 }
 
 .SuaiButtonSelect {

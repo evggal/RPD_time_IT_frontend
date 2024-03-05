@@ -10,6 +10,7 @@ import ManagePage from './pages/ManagePage/Manage';
 import { rpd } from './interface/interface';
 import Header from './elemOnPages/header/Header';
 import { GetAllCritical, SearchRpd } from './ApiAccess/RpdRepository';
+import ChangeTemplatePage from './pages/changeTemplatePage/ChangeTemplatePage';
 
 
 function App() {
@@ -23,12 +24,11 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      <Header/>
-
       <Routes>
         <Route path="/" element={<PageTable rpds={rpds} setRpds={setRpds} selected={selectedRpds} setSelectedRpds={setSelectedRpds}/>} />
           <Route path="/info" element={<InfoPage />} />
           <Route path="/manage" element={<ManagePage selected={selectedRpds}/>} />
+          <Route path="/changeTemplate" element={<ChangeTemplatePage setRpds={setRpds} selected={selectedRpds} setSelectedRpds={setSelectedRpds}/>}  />
       </Routes>
       </BrowserRouter>
     </div>

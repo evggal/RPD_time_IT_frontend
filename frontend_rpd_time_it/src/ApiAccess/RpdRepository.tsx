@@ -42,7 +42,8 @@ export const GetAllCritical = async () : Promise<Array<Critical>> => {
     return content
 }
 
-export const GetAllCriticalByCritical = async (critical: Critical) : Promise<Array<Critical>> => {
+export const GetAllCriticalByCriticals = async (critical: Critical): Promise<Array<Critical>> => {
+    console.log(JSON.stringify(critical), "JSON")
     const response = await window.fetch(process.env.REACT_APP_API + '/RPD/SearchCriticalInfos', {
 
         method: 'POST',
