@@ -65,8 +65,12 @@ function Filter(props:
     const [CountOfHourCourseWork, setCountOfHourCourseWork] = useState<Array<SelectSearchOption>>([{ name: "-", value: "-1" }])
 
     useEffect(() => {
+        
         const init = async () => {
+            props.setLoader(true)
             let result: Array<Critical> = await GetAllCritical()
+            props.setLoader(false)
+
             result.map(crit => {
                 setFaculty((f: Array<SelectSearchOption>) => {
                     if (f.map(f => f.value).includes(crit.faculty)) {
@@ -142,7 +146,9 @@ function Filter(props:
                 })
             })
         }
+        
         init()
+       
 
 
     }, [])

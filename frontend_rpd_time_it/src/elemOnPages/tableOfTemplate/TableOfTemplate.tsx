@@ -1,6 +1,7 @@
 import "./TableOfTemplate.css"
 import Table from 'react-bootstrap/Table';
 import eye from "./../../images/eye.svg"
+import plus from "./../../images/Plus.svg"
 import Block from "../block/Block";
 import { Link } from "react-router-dom";
 import { rpd } from "../../interface/interface";
@@ -17,7 +18,7 @@ function TableOfTemplate(props:
     }) {
     console.log(props.Loader)
     if (props.Loader) {
-        return <Block className="TableOfTemplate">
+        return <Block className="TableOfTemplate" >
             <Audio
                 height="200"
                 width="200"
@@ -41,6 +42,12 @@ function TableOfTemplate(props:
 
                 <thead>
                     <tr>
+                        <td></td>
+                        <td><Link to="/changeTemplate"><img src={plus} alt="Скачать" /></Link> </td>
+                        <td colSpan={4}>Создать новый РПД</td>
+                    </tr>
+                    <tr>
+                        <th></th>
                         <th></th>
                         <th>Предмет</th>
                         <th>Кафедра</th>
@@ -49,10 +56,7 @@ function TableOfTemplate(props:
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><Link to="/changeTemplate"><img src={eye} alt="Скачать" /></Link> </td>
-                        <td colSpan={4}>Создать новый РПД</td>
-                    </tr>
+
                     {props.rpds.map((elem, index) =>
                         <tr>
                             <td>

@@ -9,15 +9,18 @@ import SuaiButton from "../suaiButton/SuaiButton";
 import { Link } from "react-router-dom";
 
 
-
+type hren = {
+    flag: boolean,
+    obj: Critical
+}
 function ChangeTemplatePage(props:
     {
         setCritical: React.Dispatch<React.SetStateAction<Critical>>,
     },
 
 ) {
-    const [buttonNextPage, setButtonNextPage] = useState(false)
-
+    const [buttonNextPage, setButtonNextPage] = useState<hren>({ flag:false, obj:{}})
+    
 
     const [facultySearch, setFacultySearch] = useState<string>()
     const [specialtyNumberSearch, setSpecialtyNumberSearch] = useState<string>()
@@ -77,7 +80,9 @@ function ChangeTemplatePage(props:
             let result: Array<Critical> = await GetAllCriticalByCriticals(data)
             console.log(result, 0)
             if (result.length == 1) {
-                setButtonNextPage(n => n = true)
+                setButtonNextPage(n => {
+                    return {...n, flag: true, obj:result[0]}
+                } )
             }
             setFaculty([{ name: "-", value: "-1" }])
             setFaculty([{ name: "-", value: "-1" }])
@@ -237,8 +242,8 @@ function ChangeTemplatePage(props:
 
                 </div>
 
-                {buttonNextPage ? 
-                <Link to="/changeTemplate2">
+                {buttonNextPage.flag ? 
+                <Link to="/changeTemplate2" state={buttonNextPage.obj}>
                     <SuaiButton className="SuaiButton_blue">Далее</SuaiButton>
                 </Link> : <></>}
 

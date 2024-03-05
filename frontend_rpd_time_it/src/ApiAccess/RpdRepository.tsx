@@ -55,3 +55,19 @@ export const GetAllCriticalByCriticals = async (critical: Critical): Promise<Arr
     let content: Array<Critical> = await response.json()
     return content
 }
+export const CreateRpd = async (Rpd: rpd) => {
+    const response = await window.fetch(process.env.REACT_APP_API + '/RPD/CreateRPD', {
+
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json;charset=UTF-8',
+        },
+        body: JSON.stringify(Rpd),
+    })
+    if(response.status!==200){
+        alert("Ошибка, рпд не создан")
+    }
+    else{
+        alert("Рпд создан")
+    }
+}

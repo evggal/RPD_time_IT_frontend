@@ -11,6 +11,7 @@ import { Critical, rpd } from './interface/interface';
 import Header from './elemOnPages/header/Header';
 import { GetAllCritical, SearchRpd } from './ApiAccess/RpdRepository';
 import ChangeTemplatePage from './pages/changeTemplatePage/ChangeTemplatePage';
+import ChangeTemplateNoCriticalPage from './pages/changeTemplateNoCriticalPage/ChangeTemplateNoCriticalPage';
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/info" element={<InfoPage />} />
           <Route path="/manage" element={<ManagePage selected={selectedRpds}/>} />
           <Route path="/changeTemplate" element={<ChangeTemplatePage/>}  />
+          <Route path='/changeTemplate2' element={<ChangeTemplateNoCriticalPage />}/>
       </Routes>
       </BrowserRouter>
     </div>
