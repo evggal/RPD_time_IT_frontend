@@ -4,6 +4,6 @@
     "header header header header"
     ". InfoCard Description ."
     ". RezTable RezTable .";
-    grid-template-columns: 10vw 50vw 30vw auto;
+    grid-template-columns: 10vw 33vw 50vw auto;
 }
 

@@ -1,3 +1,36 @@
 .InfoCard {
     grid-area: InfoCard;
+    display: grid;
+    grid-template-areas: 
+    "h2"
+    "KafInfo"
+    "FO"
+    "Table";
+}
+
+.InfoCard__h2 {
+    grid-area: h2;
+}
+
+.InfoCard__KafInfo {
+    grid-area: KafInfo;
+    display: flex;
+    justify-content: space-around;
+}
+.InfoCard__FO {
+    grid-area: FO;
+    display: flex;
+    justify-content: space-around;
+}
+.InfoCard__Table {
+    grid-area: Table;
+    border-collapse: collapse;
+}
+.InfoCard__td {
+    border: 1px #848484 solid;
+    padding: 2px;
+}
+
+.InfoCard__td_text-align-right {
+    text-align: end;
 }
