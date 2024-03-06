@@ -1,4 +1,4 @@
-import {searchTempate, Critical, rpd} from "../interface/interface"
+import {searchTempate, Critical, rpd, rpdinfo} from "../interface/interface"
 
 export const SearchRpd = async (filter: searchTempate) : Promise<Array<rpd>> => {
     let dto: Critical = {
@@ -69,5 +69,25 @@ export const CreateRpd = async (Rpd: rpd) => {
     }
     else{
         alert("Рпд создан")
+    }
+}
+
+export const ChangeRpdInfoByRpd = async (Rpd: rpd, RpdInfo: rpdinfo) => {
+    const response = await window.fetch(process.env.REACT_APP_API + '/RPD/ChangeRpdInfosByRpd', {
+
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json;charset=UTF-8',
+        },
+        body: JSON.stringify(
+            { source: Rpd, des: RpdInfo }),
+    })
+    if(response.status!==200){
+        alert("Ошибка, рпд не изменен")
+        return false
+    }
+    else{
+        
+        return true
     }
 }

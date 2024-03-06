@@ -1,7 +1,7 @@
 import Block from "../block/Block";
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
-import { useLocation } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./ChangeTemplateNoCritical.css"
 import { CreateRpd, GetAllCriticalByCriticals } from "../../ApiAccess/RpdRepository";
@@ -23,7 +23,7 @@ export default function ChangeTemplateNoCritical() {
             setLoad(false)
             if (status.length == 0) {
                 alert("idi otsuda")
-                return <>IDI OTSUDA</>
+                return <Navigate to="/TableOfTemplate" />
             }
         }
         init()

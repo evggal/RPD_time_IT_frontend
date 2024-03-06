@@ -13,9 +13,9 @@ function PageTable(props: {
     rpds: Array<rpd>
 }) {
     useEffect(() => {
-        console.log("useEfffffffect")
         SearchRpd({}).then((data) => {
           props.setRpds(data)
+          props.setSelectedRpds([])
         })
       },[])
     const [Loader, setLoader] = useState<boolean>(false)

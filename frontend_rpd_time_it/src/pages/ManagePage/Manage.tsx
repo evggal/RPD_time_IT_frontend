@@ -13,7 +13,9 @@ function ManagePage(props: { selected: Array<rpd> }) {
             <Header />
             <Block>
                 <SuaiButton className="SuaiButton_white">Изменить критические поля у выбранных РПД</SuaiButton>
+                <Link state={props.selected} to="/ChangeRpdInfo">
                 <SuaiButton className="SuaiButton_white">Изменить заполняемые поля у выбранных РПД</SuaiButton>
+                </Link>
                 <SuaiButton className="SuaiButton_white">Скачать все</SuaiButton>
                 <SuaiButton className="SuaiButton_white">Удалить выбранные</SuaiButton>
             </Block>

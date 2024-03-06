@@ -28,8 +28,11 @@ function RezTable(props: any) {
                         <td>{data.criticalInfo.faculty}</td>
                         <td style={{width:"15vw"}}>
                             <div className="table__button">
-                                <SuaiButton className="table__buttonTD1" href="/" select={true} options={[{name: ".pdf", value: "pdf"}, {name: ".doc", value: "doc"}]}>Скачать </SuaiButton>
-                                <SuaiButton className="SuaiButton_white table__buttonTD2">Изменить</SuaiButton>
+                                <SuaiButton className="table__buttonTD1" href="/" select={true} options={[{ name: ".pdf", value: "pdf" }, { name: ".doc", value: "doc" }]}>Скачать </SuaiButton>
+                                <Link state={[data]} to="/ChangeRpdInfo">
+                                    <SuaiButton className="SuaiButton_white table__buttonTD2">Изменить</SuaiButton>
+                                </Link>
+
                                 <SuaiButton className="SuaiButton_white table__buttonTD3">Удалить</SuaiButton>
                             </div>
                             

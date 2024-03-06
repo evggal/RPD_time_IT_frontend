@@ -1,17 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import React, { useEffect, useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Routes, Route, redirect, Navigate } from 'react-router-dom';
-import { randomInt } from 'crypto';
 import PageTable from './pages/PageTable/PageTable';
 import InfoPage from './pages/infoPage/InfoPage';
 import ManagePage from './pages/ManagePage/Manage';
 import { Critical, rpd } from './interface/interface';
-import Header from './elemOnPages/header/Header';
 import { GetAllCritical, SearchRpd } from './ApiAccess/RpdRepository';
 import ChangeTemplatePage from './pages/changeTemplatePage/ChangeTemplatePage';
 import ChangeTemplateNoCriticalPage from './pages/changeTemplateNoCriticalPage/ChangeTemplateNoCriticalPage';
+import ChangeRpdInfoAll from './pages/ManagePage/ChangeRpdInfoAll';
 
 
 function App() {
@@ -31,7 +29,9 @@ function App() {
           <Route path="/info" element={<InfoPage />} />
           <Route path="/manage" element={<ManagePage selected={selectedRpds}/>} />
           <Route path="/changeTemplate" element={<ChangeTemplatePage/>}  />
-          <Route path='/changeTemplate2' element={<ChangeTemplateNoCriticalPage />}/>
+          <Route path='/changeTemplate2' element={<ChangeTemplateNoCriticalPage />} />
+          <Route path='/changeRpdInfo' element={<ChangeRpdInfoAll />}/>
+
       </Routes>
       </BrowserRouter>
     </div>
