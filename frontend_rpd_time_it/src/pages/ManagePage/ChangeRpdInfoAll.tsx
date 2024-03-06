@@ -29,8 +29,16 @@ function ChangeRpdInfoAll() {
             <h1>У всех выбранных рпд будут заменены ниже приведенные поля </h1>
             <Form>
                 <InputGroup>
-                    <InputGroup.Text >Тест</InputGroup.Text>
-                        <Form.Control value={rpdInfo.testProp} as="textarea" aria-label="With textarea" onChange={(e) => { e.preventDefault(); setRpdInfo({ ...rpdInfo, testProp: e.target.value })}}/>
+                    <InputGroup.Text >Характеристика предметной области</InputGroup.Text>
+                        <Form.Control value={rpdInfo.CharacteristicsOfTheSubjectArea} as="textarea" aria-label="With textarea" onChange={(e : any) => { e.preventDefault(); setRpdInfo({ ...rpdInfo, CharacteristicsOfTheSubjectArea: e.target.value })}}/>
+                    </InputGroup>
+                    <InputGroup>
+                    <InputGroup.Text >Цели изучения дисциплины</InputGroup.Text>
+                        <Form.Control value={rpdInfo.LearningGoals} as="textarea" aria-label="With textarea" onChange={(e: any) => { e.preventDefault(); setRpdInfo({ ...rpdInfo, LearningGoals: e.target.value })}}/>
+                    </InputGroup>
+                    <InputGroup>
+                    <InputGroup.Text >Обязательная дисциплина или по выбору (Обазательная/Необязательная)</InputGroup.Text>
+                        <Form.Control value={rpdInfo.RequaredOrNotRequiared} as="textarea" aria-label="With textarea" onChange={(e: any) => { e.preventDefault(); setRpdInfo({ ...rpdInfo, RequaredOrNotRequiared: e.target.value })}}/>
                 </InputGroup>
             </Form>
                 <SuaiButton onClick={(e : Event) => {
@@ -68,7 +76,6 @@ function ChangeRpdInfoAll() {
                                 <td>{elem.criticalInfo.numberOfDepartament}</td>
                                 <td>{elem.criticalInfo.fo}</td>
                                 <td>{elem.criticalInfo.typeOfControl}</td>
-                                <td>{elem.rpdInfo.testProp}</td>
                             </tr>
                         )}
                     </tbody>

@@ -12,7 +12,11 @@ import { Audio } from 'react-loader-spinner'
 export default function ChangeTemplateNoCritical() {
     const location = useLocation()
     const data : Critical = location.state
-    const [testProp, setTestProp] = useState<string>("")
+    const [CharacteristicsOfTheSubjectArea, setCharacteristicsOfTheSubjectArea] = useState<string>("")
+    const [LearningGoals, setLearningGoals] = useState<string>("")
+
+    const [RequaredOrNotRequiared, setRequaredOrNotRequiared] = useState<string>("")
+
     const [Load, setLoad] = useState<boolean>(false)
 
     useEffect(() => {
@@ -33,7 +37,12 @@ export default function ChangeTemplateNoCritical() {
         let rpd: rpd = {
             criticalInfo: data,
             rpdInfo: {
-                testProp: testProp
+                CharacteristicsOfTheSubjectArea: CharacteristicsOfTheSubjectArea,
+                LearningGoals: LearningGoals,
+
+                RequaredOrNotRequiared: RequaredOrNotRequiared,
+
+                
             }
         }
         await CreateRpd(rpd)
@@ -54,9 +63,17 @@ export default function ChangeTemplateNoCritical() {
         <Block>
         
             <Form>
-                <InputGroup>
-                    <InputGroup.Text>Тест</InputGroup.Text>
-                    <Form.Control as="textarea" aria-label="With textarea" onChange={(e) => setTestProp(n => n=e.target.value)}/>
+            <InputGroup>
+                    <InputGroup.Text >Характеристика предметной области</InputGroup.Text>
+                        <Form.Control value={CharacteristicsOfTheSubjectArea} as="textarea" aria-label="With textarea" onChange={(e : any) => { e.preventDefault(); setCharacteristicsOfTheSubjectArea(e.target.value)}}/>
+                    </InputGroup>
+                    <InputGroup>
+                    <InputGroup.Text >Цели изучения дисциплины</InputGroup.Text>
+                        <Form.Control value={LearningGoals} as="textarea" aria-label="With textarea" onChange={(e: any) => { e.preventDefault(); setLearningGoals(e.target.value)}}/>
+                    </InputGroup>
+                    <InputGroup>
+                    <InputGroup.Text >Обязательная дисциплина или по выбору (Обазательная/Необязательная)</InputGroup.Text>
+                        <Form.Control value={RequaredOrNotRequiared} as="textarea" aria-label="With textarea" onChange={(e: any) => { e.preventDefault(); setRequaredOrNotRequiared(e.target.value)}}/>
                 </InputGroup>
             </Form>
             <SuaiButton onClick = {CreateRpdAsync} >Создать</SuaiButton>

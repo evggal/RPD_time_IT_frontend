@@ -4,10 +4,15 @@ import Block from "../block/Block"
 import { Table } from "react-bootstrap"
 import SuaiButton from "../suaiButton/SuaiButton"
 import { rpd } from "../../interface/interface"
-
+import FileSaver from 'file-saver';
+import { DownloadRpd } from "../../ApiAccess/RpdRepository"
 function RezTable(props: any) {
     const location = useLocation()
-    const data : rpd = location.state
+    const data: rpd = location.state
+    const handleDownload = (props:any) => {
+        const blob = new Blob([props.pdf], { type: 'application/pdf' });
+        FileSaver.saveAs(blob, 'document.pdf');
+      };
     return (
         <Block className={"RezTable " + props.className}>
             <Table striped bordered hover style={{textAlign:"center"}}>
@@ -28,7 +33,9 @@ function RezTable(props: any) {
                         <td>{data.criticalInfo.faculty}</td>
                         <td style={{width:"15vw"}}>
                             <div className="table__button">
-                                <SuaiButton className="table__buttonTD1" href="/" select={true} options={[{ name: ".pdf", value: "pdf" }, { name: ".doc", value: "doc" }]}>Скачать </SuaiButton>
+                                <SuaiButton onClick={async () => { 
+                                    handleDownload(await DownloadRpd(data))
+                                }} className="table__buttonTD1" href="/" select={true} options={[{ name: ".pdf", value: "pdf" }, { name: ".doc", value: "doc" }]}>Скачать </SuaiButton>
                                 <Link state={[data]} to="/ChangeRpdInfo">
                                     <SuaiButton className="SuaiButton_white table__buttonTD2">Изменить</SuaiButton>
                                 </Link>
@@ -42,6 +49,8 @@ function RezTable(props: any) {
             </Table>
         </Block>
     )
+    
 }
+
 
 export default RezTable
