@@ -94,14 +94,51 @@ export const ChangeRpdInfoByRpd = async (Rpd: rpd, RpdInfo: rpdinfo) => {
     }
 }
 
-export const DownloadRpd = async (Rpd: rpd) => {
-    const response = await window.fetch(process.env.REACT_APP_API + '/RPD/GenerateRPD', {
+// export const DownloadRpd = async (Rpd: rpd) => {
+//     const response = await window.fetch(process.env.REACT_APP_API + '/RPD/GenerateRPD', {
+//         method: 'POST',
+//         headers: {
+//           'content-type': 'application/json;charset=UTF-8',
+//         },
+//         body: JSON.stringify(Rpd),
+//     })
+
+//     return await response.json()
+// }
+export async function DownloadRpd(Rpd: rpd) {
+    fetch(process.env.REACT_APP_API + '/RPD/GenerateRPD', {
         method: 'POST',
         headers: {
-          'content-type': 'application/json;charset=UTF-8',
+            'content-type': 'application/json;charset=UTF-8',
         },
         body: JSON.stringify(Rpd),
     })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob();
+        })
+        .then(blob => {
+            // Создание URL для Blob
+            var url = URL.createObjectURL(blob);
 
-    return await response.json()
+            // Создание ссылки для скачивания
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = 'example.docx';
+
+            // Добавление ссылки на страницу и эмуляция клика для скачивания файла
+            document.body.appendChild(link);
+            link.click();
+
+            // Очистка созданного URL
+            URL.revokeObjectURL(url);
+
+            // Удаление ссылки из DOM
+            document.body.removeChild(link);
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
 }
