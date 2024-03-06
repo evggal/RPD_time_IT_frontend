@@ -15,11 +15,11 @@ function InfoCard () {
                 <span className="InfoCard__span"> ({data.criticalInfo.specialtyNumber})</span>
             </h2>
             <div className="InfoCard__KafInfo">
-                <p>Факультет: {data.criticalInfo.faculty}</p>
-                <p>Кафедра: {data.criticalInfo.numberOfDepartament}</p>
-                <p>Группа: {data.criticalInfo.groupName}</p>
-                <p>Форма обучения: {data.criticalInfo.fo}</p>
-                <p>СПЗ: {data.criticalInfo.spz}</p>
+                <p className="InfoCard__p">Факультет: {data.criticalInfo.faculty}</p>
+                <p className="InfoCard__p">Кафедра: {data.criticalInfo.numberOfDepartament}</p>
+                <p className="InfoCard__p">Группа: {data.criticalInfo.groupName}</p>
+                <p className="InfoCard__p">Форма обучения: {data.criticalInfo.fo}</p>
+                <p className="InfoCard__p">СПЗ: {data.criticalInfo.spz}</p>
             </div>
             
             <table  className="InfoCard__Table">

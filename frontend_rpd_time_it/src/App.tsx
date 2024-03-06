@@ -9,7 +9,7 @@ import { Critical, rpd } from './interface/interface';
 import { GetAllCritical, SearchRpd } from './ApiAccess/RpdRepository';
 import ChangeTemplatePage from './pages/changeTemplatePage/ChangeTemplatePage';
 import ChangeTemplateNoCriticalPage from './pages/changeTemplateNoCriticalPage/ChangeTemplateNoCriticalPage';
-import ChangeRpdInfoAll from './pages/ManagePage/ChangeRpdInfoAll';
+import ChangeRpdInfoAll from './pages/changeRpdInfoAll/ChangeRpdInfoAll';
 
 
 function App() {

@@ -9,10 +9,15 @@
 
 .InfoCard__h2 {
     grid-area: h2;
+    font-family: Roboto-Lite;
+    margin: 0;
+    padding: 10px 0;
+    border-bottom: 1px #848484 solid;
 }
 
 .InfoCard__span {
     color:#999;
+    font-style: italic;
 }
 
 .InfoCard__KafInfo {
@@ -21,8 +26,14 @@
     flex-wrap: wrap;
     gap:5px;
     justify-content: space-around;
-    color: var(--suai-brand-color-1)
+    color: var(--suai-brand-color-1);
+    padding: 10px;
 }
+
+.InfoCard__p {
+    margin: 0;  
+}
+
 .InfoCard__Table {
     grid-area: Table;
     border-collapse: collapse;

@@ -4,8 +4,19 @@
   --suai-button-color: #3498DB;
 }
 
+@font-face {
+  font-family: Roboto;
+  src: url("./fonts/Roboto-Regular.ttf");
+}
+
+@font-face {
+  font-family: Roboto-Lite;
+  src: url("./fonts/Roboto-Light.ttf");
+}
+
 body {
   background-color: var(--main-background);
+  font-family: Roboto;
 }
 
 .button-suai {
@@ -14,4 +25,8 @@ body {
   border: none;
   background-color: var(--suai-button-color);
   color:#fff;
+}
+
+h1 {
+  font-family: Roboto-Lite;
 }

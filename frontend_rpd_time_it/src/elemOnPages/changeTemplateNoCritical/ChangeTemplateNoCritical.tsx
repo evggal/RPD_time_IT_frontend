@@ -61,8 +61,21 @@ export default function ChangeTemplateNoCritical() {
     }
     return (
         <Block>
-        
-            <Form>
+            <form>
+                    <div className="form__div">
+                        <label className="form__label">Характеристика предметной области</label>
+                        <textarea className="form__textarea" value={CharacteristicsOfTheSubjectArea}  onChange={(e : any) => { e.preventDefault(); setCharacteristicsOfTheSubjectArea(e.target.value)}}></textarea>
+                    </div>
+                    <div className="form__div">
+                        <label className="form__label">Цели изучения дисциплины</label>
+                        <textarea className="form__textarea"  value={LearningGoals}  onChange={(e: any) => { e.preventDefault(); setLearningGoals(e.target.value)}}></textarea>
+                    </div>
+                    <div className="form__div">
+                        <label className="form__label">Обязательная дисциплина или по выбору (Обазательная/Необязательная)</label>
+                        <textarea className="form__textarea"  value={RequaredOrNotRequiared}  onChange={(e: any) => { e.preventDefault(); setRequaredOrNotRequiared(e.target.value)}}></textarea>
+                    </div>
+                </form>
+            {/*<Form>
             <InputGroup>
                     <InputGroup.Text >Характеристика предметной области</InputGroup.Text>
                         <Form.Control value={CharacteristicsOfTheSubjectArea} as="textarea" aria-label="With textarea" onChange={(e : any) => { e.preventDefault(); setCharacteristicsOfTheSubjectArea(e.target.value)}}/>
@@ -75,7 +88,7 @@ export default function ChangeTemplateNoCritical() {
                     <InputGroup.Text >Обязательная дисциплина или по выбору (Обазательная/Необязательная)</InputGroup.Text>
                         <Form.Control value={RequaredOrNotRequiared} as="textarea" aria-label="With textarea" onChange={(e: any) => { e.preventDefault(); setRequaredOrNotRequiared(e.target.value)}}/>
                 </InputGroup>
-            </Form>
+    </Form>*/}
             <SuaiButton onClick = {CreateRpdAsync} >Создать</SuaiButton>
         </Block>
     )
