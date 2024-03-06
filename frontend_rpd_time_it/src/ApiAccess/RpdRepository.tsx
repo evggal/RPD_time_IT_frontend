@@ -27,7 +27,9 @@ export const SearchRpd = async (filter: searchTempate) : Promise<Array<rpd>> => 
         },
         body: JSON.stringify(dto),
     })
+    
     let content: Array<rpd> = await response.json()
+    console.log(content)
     return content
 }
 export const GetAllCritical = async () : Promise<Array<Critical>> => {
@@ -90,4 +92,16 @@ export const ChangeRpdInfoByRpd = async (Rpd: rpd, RpdInfo: rpdinfo) => {
         
         return true
     }
+}
+
+export const DownloadRpd = async (Rpd: rpd) => {
+    const response = await window.fetch(process.env.REACT_APP_API + '/RPD/GenerateRPD', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json;charset=UTF-8',
+        },
+        body: JSON.stringify(Rpd),
+    })
+
+    return await response.json()
 }

@@ -39,7 +39,6 @@ function ManagePage(props: { selected: Array<rpd> }) {
                                 <td>{elem.criticalInfo.numberOfDepartament}</td>
                                 <td>{elem.criticalInfo.fo}</td>
                                 <td>{elem.criticalInfo.typeOfControl}</td>
-                                <td>{elem.rpdInfo.testProp}</td>
                             </tr>
                         )}
                     </tbody>

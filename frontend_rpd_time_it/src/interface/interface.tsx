@@ -31,7 +31,10 @@ export interface Critical {
     typeOfControl?: string,
 }
 export interface rpdinfo{
-    testProp: string
+   
+	CharacteristicsOfTheSubjectArea :string
+	LearningGoals :string
+	RequaredOrNotRequiared :string
 }
 export interface rpd{
     criticalInfo: Critical,
