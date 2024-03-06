@@ -4,7 +4,6 @@
     grid-template-areas: 
     "h2"
     "KafInfo"
-    "FO"
     "Table";
 }
 
@@ -12,25 +11,28 @@
     grid-area: h2;
 }
 
+.InfoCard__span {
+    color:#999;
+}
+
 .InfoCard__KafInfo {
     grid-area: KafInfo;
     display: flex;
+    flex-wrap: wrap;
+    gap:5px;
     justify-content: space-around;
-}
-.InfoCard__FO {
-    grid-area: FO;
-    display: flex;
-    justify-content: space-around;
+    color: var(--suai-brand-color-1)
 }
 .InfoCard__Table {
     grid-area: Table;
     border-collapse: collapse;
+    color: var(--suai-brand-color-1)
 }
 .InfoCard__td {
-    border: 1px #848484 solid;
+    border: 1px var(--suai-button-color) solid;
     padding: 2px;
 }
 
-.InfoCard__td_text-align-right {
-    text-align: end;
+.InfoCard__td_text-align-center {
+    text-align: center;
 }
