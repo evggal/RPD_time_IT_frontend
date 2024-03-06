@@ -4,7 +4,7 @@ import 'react-select-search/style.css'
 import Block from "../block/Block";
 import SuaiButton from "../suaiButton/SuaiButton";
 import { useEffect, useState } from "react";
-import { SearchRpd, GetAllCritical } from "../../ApiAccess/RpdRepository"
+import { SearchRpd, GetAllCritical, GetAllCriticalByCriticals } from "../../ApiAccess/RpdRepository"
 import { searchTempate, Critical, rpd } from "../../interface/interface"
 
 function Filter(props:
@@ -67,10 +67,48 @@ function Filter(props:
     useEffect(() => {
         
         const init = async () => {
-            props.setLoader(true)
-            let result: Array<Critical> = await GetAllCritical()
-            props.setLoader(false)
-
+            const data: Critical = {
+                faculty: facultySearch,
+                numberOfDepartament: numberOfDepartamentSearch,
+                specialtyNumber: specialtyNumberSearch,
+                groupName: groupNameSearch,
+                name: nameSearch,
+                fo: formaObuchenuaSearch,
+                typeOfControl: typeOfControlSearch,
+                countOfHourLecture: countOfHourLectureSearch,
+                countOfHourPractice: countOfHourPracticeSearch,
+                countOfHourLab: countOfHourLabSearch,
+                countOfHourCourseProject: countOfHourCourseProjectSearch,
+                countOfHourCourseWork: countOfHourCourseWorkSearch,
+            };
+            let result: Array<Critical> = await GetAllCriticalByCriticals(data)
+            console.log(result, 0)
+            if (result.length == 1) {
+                setFacultySearch(result[0].faculty)
+                setSpecialtyNumberSearch(result[0].specialtyNumber)
+                setGroupNameSearch(result[0].groupName)
+                setNameSearch(result[0].name)
+                setNumberOfDepartamentSearch(result[0].numberOfDepartament)
+                setTypeOfControlSearch(result[0].typeOfControl)
+                setFormaObuchenuaSearch(result[0].fo)
+                setCountOfHourLectureSearch(result[0].countOfHourLecture)
+                setCountOfHourPracticeSearch(result[0].countOfHourPractice)
+                setCountOfHourLabSearch(result[0].countOfHourLab)
+                setCountOfHourCourseProjectSearch(result[0].countOfHourCourseProject)
+                setCountOfHourCourseWorkSearch(result[0].countOfHourCourseWork)
+            }
+            setFaculty([])
+            setKafedra([])
+            setSpecialtyNumber([])
+            setGroupName([])
+            setNamePredmeta([])
+            setFormaObuchenua([])
+            setTypeofControl([])
+            setCountOfHourLecture([])
+            setCountOfHourPractice([])
+            setCountOfHourLab([])
+            setCountOfHourCourseProject([])
+            setCountOfHourCourseWork([])
             result.map(crit => {
                 setFaculty((f: Array<SelectSearchOption>) => {
                     if (f.map(f => f.value).includes(crit.faculty)) {
@@ -151,7 +189,32 @@ function Filter(props:
        
 
 
-    }, [])
+    }, [facultySearch,
+        specialtyNumberSearch,
+        groupNameSearch,
+        nameSearch,
+        numberOfDepartamentSearch,
+        typeOfControlSearch,
+        formaObuchenuaSearch,
+        countOfHourLectureSearch,
+        countOfHourPracticeSearch,
+        countOfHourLabSearch,
+        countOfHourCourseProjectSearch,
+        countOfHourCourseWorkSearch,])
+    const Reload = () => {
+        setFacultySearch("")
+        setSpecialtyNumberSearch("")
+        setGroupNameSearch("")
+        setNameSearch("")
+        setNumberOfDepartamentSearch("")
+        setTypeOfControlSearch("")
+        setFormaObuchenuaSearch("")
+        setCountOfHourLectureSearch("")
+        setCountOfHourPracticeSearch("")
+        setCountOfHourLabSearch("")
+        setCountOfHourCourseProjectSearch("")
+        setCountOfHourCourseWorkSearch("")
+    }
     return (
         <Block className="filter">
             <form>
@@ -171,6 +234,8 @@ function Filter(props:
 
                 </div>
                 <SuaiButton className="SuaiButton_blue" onClick={(e: React.ChangeEvent<HTMLInputElement>) => { createSearch(e) }}>Искать</SuaiButton>
+                <SuaiButton className="SuaiButton_blue" onClick={(e: React.ChangeEvent<HTMLInputElement>) => { e.preventDefault(); Reload()}}>Сбросить</SuaiButton>
+
             </form>
         </Block>
     )

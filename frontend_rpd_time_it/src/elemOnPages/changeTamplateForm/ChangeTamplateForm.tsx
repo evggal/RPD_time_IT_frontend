@@ -78,8 +78,23 @@ function ChangeTemplatePage(props:
             };
             console.log(1, JSON.stringify(data))
             let result: Array<Critical> = await GetAllCriticalByCriticals(data)
-            console.log(result, 0)
             if (result.length == 1) {
+                setFacultySearch(result[0].faculty)
+                setSpecialtyNumberSearch(result[0].specialtyNumber)
+                setGroupNameSearch(result[0].groupName)
+                setNameSearch(result[0].name)
+                setNumberOfDepartamentSearch(result[0].numberOfDepartament)
+                setTypeOfControlSearch(result[0].typeOfControl)
+                setFormaObuchenuaSearch(result[0].fo)
+                setCountOfHourLectureSearch(result[0].countOfHourLecture)
+                setCountOfHourPracticeSearch(result[0].countOfHourPractice)
+                setCountOfHourLabSearch(result[0].countOfHourLab)
+                setCountOfHourCourseProjectSearch(result[0].countOfHourCourseProject)
+                setCountOfHourCourseWorkSearch(result[0].countOfHourCourseWork)
+                setSpzSearch(result[0].spz)
+                setSrsSearch(result[0].srs)
+                setExamHoursSearch(result[0].examHours)
+                setTypeOfCourseProjectSearch(result[0].typeOfCourseProject)
                 setButtonNextPage(n => {
                     return {...n, flag: true, obj:result[0]}
                 } )

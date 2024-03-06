@@ -29,6 +29,7 @@ function TableOfTemplate(props:
 
         </Block>
     }
+
     console.log(props.selected)
     const a = { criticalInfo: { name: "name", numberOfDepartament: "numberOfDepartament", fo: "fo", typeOfControl: "typeOfControl" } }
     return (
